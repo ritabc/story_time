@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_005532) do
+ActiveRecord::Schema.define(version: 2018_09_06_174758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_005532) do
   create_table "contributions", force: :cascade do |t|
     t.integer "story_id"
     t.integer "user_id"
-    t.integer "image_id"
-    t.integer "sentence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,10 +27,12 @@ ActiveRecord::Schema.define(version: 2018_09_06_005532) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "contribution_id"
   end
 
   create_table "sentences", force: :cascade do |t|
     t.text "sentence_text"
+    t.integer "contribution_id"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -47,4 +47,6 @@ ActiveRecord::Schema.define(version: 2018_09_06_005532) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "images", "contributions"
+  add_foreign_key "sentences", "contributions"
 end
