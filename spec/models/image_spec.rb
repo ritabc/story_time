@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 describe Image do
-  # it { should belong_to :contribution }
+  it { should belong_to :contribution }
 end

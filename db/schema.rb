@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_174758) do
+ActiveRecord::Schema.define(version: 2018_09_06_221624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 2018_09_06_174758) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "inspiration_image"
   end
 
   create_table "images", force: :cascade do |t|
     t.string "name"
-    t.string "url"
+    t.string "src"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "contribution_id"
   end
 
   create_table "sentences", force: :cascade do |t|
@@ -47,6 +47,5 @@ ActiveRecord::Schema.define(version: 2018_09_06_174758) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "images", "contributions"
   add_foreign_key "sentences", "contributions"
 end
